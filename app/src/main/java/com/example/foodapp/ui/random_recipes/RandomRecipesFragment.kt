@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.foodapp.databinding.FragmentRandomRecipesBinding
@@ -16,10 +17,9 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RandomRecipesFragment : Fragment() {
     private lateinit var binding: FragmentRandomRecipesBinding
-    private lateinit var viewModel: RandomRecipesFragmentViewModel
 
-    @Inject
-    lateinit var remoteFoodRepository: RemoteFoodRepository
+    private val viewModel: RandomRecipesFragmentViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,9 +31,6 @@ class RandomRecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val factory = RandomRecipesFragmentViewModelFactory(remoteFoodRepository)
-        viewModel =
-            ViewModelProvider(this, factory)[RandomRecipesFragmentViewModel::class.java]
         viewModel.getRandomFoods().observe(viewLifecycleOwner, Observer {
             if (it.isSuccessful) {
                 Log.d(

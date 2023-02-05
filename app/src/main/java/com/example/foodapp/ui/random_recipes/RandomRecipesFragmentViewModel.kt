@@ -7,10 +7,12 @@ import com.example.foodapp.model.retrofit.FoodList
 import com.example.foodapp.retrofit.RemoteFoodRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import retrofit2.Response
+import javax.inject.Inject
 
-class RandomRecipesFragmentViewModel constructor(private val repository: RemoteFoodRepository) :
+@HiltViewModel
+class RandomRecipesFragmentViewModel @Inject constructor(private val repository: RemoteFoodRepository) :
     ViewModel() {
-    private val randomFoods = liveData<Response<FoodList?>> {
+    private val randomFoods = liveData {
         val foods = repository.getFood()
         emit(foods)
     }

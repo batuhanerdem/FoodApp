@@ -7,12 +7,15 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
-@InstallIn(FragmentComponent::class,)
+@InstallIn(SingletonComponent::class)
 class NetModule() {
+    @Singleton
     @Provides
     fun provideRetrofitInstance(): Retrofit {
         val baseUrl = RetrofitInstance.BASE_URL
@@ -21,11 +24,13 @@ class NetModule() {
             .baseUrl(baseUrl).build()
     }
 
+    @Singleton
     @Provides
     fun provideFoodService(retrofit: Retrofit): FoodService {
         return retrofit.create(FoodService::class.java)
     }
 
+    @Singleton
     @Provides
     fun provideRemoteFoodRepository(service: FoodService): RemoteFoodRepository {
         return RemoteFoodRepository(service)
