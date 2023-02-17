@@ -3,10 +3,15 @@ FoodApp is an app that you can find random recipes and add them to your favorite
 
 # Those are the technologies I used in this app:
 MVVM Structure
+
 Hilt framework for dependency
+
 Room for database
+
 Retrofit for RestApi
+
 Cardview
+
 View Binding
 
 # Photos of the app:
