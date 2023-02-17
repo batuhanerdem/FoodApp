@@ -1,83 +1,85 @@
 package com.example.foodapp.model
 
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverter
+import androidx.room.TypeConverters
+import com.example.foodapp.data.local.Converters
 import com.example.foodapp.model.retrofit.ExtendedIngredient
 import com.example.foodapp.model.retrofit.WinePairing
 import com.google.gson.annotations.SerializedName
 
+@Entity
+@TypeConverters(Converters::class)
 data class Food(
     @SerializedName("aggregateLikes")
-    val aggregateLikes: Int,
-    @SerializedName("analyzedInstructions")
-    val analyzedInstructions: List<Any>,
+    val aggregateLikes: Int?,
     @SerializedName("cheap")
-    val cheap: Boolean,
+    val cheap: Boolean?,
     @SerializedName("creditsText")
-    val creditsText: String,
-    @SerializedName("cuisines")
-    val cuisines: List<Any>,
+    val creditsText: String?,
     @SerializedName("dairyFree")
-    val dairyFree: Boolean,
-    @SerializedName("diets")
-    val diets: List<Any>,
+    val dairyFree: Boolean?,
     @SerializedName("dishTypes")
-    val dishTypes: List<String>,
+    val dishTypes: List<String>?,
     @SerializedName("extendedIngredients")
-    val extendedIngredients: List<ExtendedIngredient>,
+    val extendedIngredients: List<ExtendedIngredient>?,
     @SerializedName("gaps")
-    val gaps: String,
+    val gaps: String?,
     @SerializedName("glutenFree")
-    val glutenFree: Boolean,
+    val glutenFree: Boolean?,
     @SerializedName("healthScore")
-    val healthScore: Double,
+    val healthScore: Double?,
+    @PrimaryKey
     @SerializedName("id")
-    val id: Int,
+    val uid: Int?,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("imageType")
-    val imageType: String,
+    val imageType: String?,
     @SerializedName("instructions")
-    val instructions: String,
+    val instructions: String?,
     @SerializedName("ketogenic")
-    val ketogenic: Boolean,
+    val ketogenic: Boolean?,
     @SerializedName("license")
-    val license: String,
+    val license: String?,
     @SerializedName("lowFodmap")
-    val lowFodmap: Boolean,
-    @SerializedName("occasions")
-    val occasions: List<Any>,
+    val lowFodmap: Boolean?,
     @SerializedName("pricePerServing")
-    val pricePerServing: Double,
+    val pricePerServing: Double?,
     @SerializedName("readyInMinutes")
-    val readyInMinutes: Int,
+    val readyInMinutes: Int?,
     @SerializedName("servings")
-    val servings: Int,
+    val servings: Int?,
     @SerializedName("sourceName")
-    val sourceName: String,
+    val sourceName: String?,
     @SerializedName("sourceUrl")
-    val sourceUrl: String,
+    val sourceUrl: String?,
     @SerializedName("spoonacularScore")
-    val spoonacularScore: Double,
+    val spoonacularScore: Double?,
     @SerializedName("spoonacularSourceUrl")
-    val spoonacularSourceUrl: String,
+    val spoonacularSourceUrl: String?,
     @SerializedName("summary")
-    val summary: String,
+    val summary: String?,
     @SerializedName("sustainable")
-    val sustainable: Boolean,
+    val sustainable: Boolean?,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
     @SerializedName("vegan")
-    val vegan: Boolean,
+    val vegan: Boolean?,
     @SerializedName("vegetarian")
-    val vegetarian: Boolean,
+    val vegetarian: Boolean?,
     @SerializedName("veryHealthy")
-    val veryHealthy: Boolean,
+    val veryHealthy: Boolean?,
     @SerializedName("veryPopular")
-    val veryPopular: Boolean,
+    val veryPopular: Boolean?,
     @SerializedName("weightWatcherSmartPoints")
-    val weightWatcherSmartPoints: Int,
+    val weightWatcherSmartPoints: Int?,
     @SerializedName("whole30")
-    val whole30: Boolean,
+    val whole30: Boolean?,
     @SerializedName("winePairing")
-    val winePairing: WinePairing
+    @Embedded
+    val winePairing: WinePairing?
 )

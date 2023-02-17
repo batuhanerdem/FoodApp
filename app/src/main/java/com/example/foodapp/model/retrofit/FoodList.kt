@@ -5,5 +5,5 @@ import com.example.foodapp.model.Food
 import com.google.gson.annotations.SerializedName
 
 data class FoodList(
-    val recipes: List<Food>
+    val recipes: List<Food>?
 )

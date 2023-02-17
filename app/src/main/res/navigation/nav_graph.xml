@@ -3,20 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@id/menuFragment">
 
-    <fragment
-        android:id="@+id/welcomeFragment"
-        android:name="com.example.foodapp.ui.welcome.WelcomeFragment"
-        android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
-        <action
-            android:id="@+id/action_welcomeFragment_to_randomRecipesFragment"
-            app:destination="@id/randomRecipesFragment" />
-    </fragment>
     <fragment
         android:id="@+id/randomRecipesFragment"
         android:name="com.example.foodapp.ui.random_recipes.RandomRecipesFragment"
         android:label="fragment_random_recipes"
-        tools:layout="@layout/fragment_random_recipes" />
+        tools:layout="@layout/fragment_random_recipes" >
+        <action
+            android:id="@+id/action_randomRecipesFragment_to_favoriteRecipesFragment"
+            app:destination="@id/favoriteRecipesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteRecipesFragment"
+        android:name="com.example.foodapp.ui.favorite_recipes.FavoriteRecipesFragment"
+        android:label="fragment_favorite_recipes"
+        tools:layout="@layout/fragment_favorite_recipes" >
+        <action
+            android:id="@+id/action_favoriteRecipesFragment_to_randomRecipesFragment"
+            app:destination="@id/randomRecipesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.foodapp.ui.starter.MenuFragment"
+        android:label="fragment_menu"
+        tools:layout="@layout/fragment_menu" >
+        <action
+            android:id="@+id/action_menuFragment_to_randomRecipesFragment"
+            app:destination="@id/randomRecipesFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_favoriteRecipesFragment"
+            app:destination="@id/favoriteRecipesFragment" />
+    </fragment>
 </navigation>
